@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ByteBazz APIs - Bots y Sistemas</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+  <header>
+    <h1><i class="fa-solid fa-robot"></i> ByteBazz APIs</h1>
+    <p><i class="fa-brands fa-whatsapp"></i> Soluciones para Bots de WhatsApp, sistemas y más</p>
+    <button id="comenzar-btn" class="comenzar-btn"><i class="fa-solid fa-rocket"></i> Comenzar</button>
+    <button id="google-login" class="google-btn"><img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google" class="google-logo"> Iniciar sesión con Google</button>
+    <div id="user-info" style="display:none;"></div>
+  </header>
+  <main>
+    <section class="intro">
+      <h2><i class="fa-solid fa-bolt"></i> ¿Qué ofrecemos?</h2>
+      <ul>
+        <li><i class="fa-solid fa-shield-halved"></i> APIs rápidas y seguras para bots de WhatsApp</li>
+        <li><i class="fa-solid fa-plug"></i> Integración sencilla con cualquier sistema</li>
+        <li><i class="fa-solid fa-book"></i> Documentación clara y soporte profesional</li>
+      </ul>
+    </section>
+    <section class="api-demo">
+      <h2><i class="fa-solid fa-code"></i> Ejemplo de Endpoint</h2>
+      <pre><code>GET /api/ejemplo</code></pre>
+      <button id="probar-api"><i class="fa-solid fa-play"></i> Probar API</button>
+      <pre id="respuesta-api"></pre>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2024 ByteBazz. Todos los derechos reservados.<br>By Sunkovv <i class="fa-solid fa-user-astronaut"></i></p>
+  </footer>
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-analytics-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
+  <script>
+    // Configuración de Firebase
+    const firebaseConfig = {
+      apiKey: "AIzaSyCR0pZ05ouTScwY8c90BQP4LCyQrHsaK6Q",
+      authDomain: "bytebazz-apis.firebaseapp.com",
+      projectId: "bytebazz-apis",
+      storageBucket: "bytebazz-apis.firebasestorage.app",
+      messagingSenderId: "480135965859",
+      appId: "1:480135965859:web:40567753bc972fe7182316",
+      measurementId: "G-MYS6QLP6K6"
+    };
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+    const auth = firebase.auth();
+    const db = firebase.database();
+
+    // Login con Google
+    document.getElementById('google-login').onclick = async () => {
+      const provider = new firebase.auth.GoogleAuthProvider();
+      try {
+        const result = await auth.signInWithPopup(provider);
+        const user = result.user;
+        const displayName = user.displayName || user.email.split('@')[0];
+        // Guardar usuario en la base de datos
+        db.ref('usuarios/' + displayName.replace(/\s+/g, '_')).set({
+          nombre: displayName,
+          correo: user.email,
+          foto: user.photoURL
+        });
+        // Redirigir al panel
+        window.location.href = 'panel.html';
+      } catch (e) {
+        alert('Error al iniciar sesión: ' + e.message);
+      }
+    };
+
+    // Botón Comenzar (puedes personalizar su acción)
+    document.getElementById('comenzar-btn').onclick = () => {
+      document.getElementById('google-login').scrollIntoView({behavior:'smooth'});
+    };
+
+    // Probar API demo
+    document.getElementById('probar-api').onclick = async () => {
+      const res = await fetch('/api/ejemplo');
+      const data = await res.json();
+      document.getElementById('respuesta-api').textContent = JSON.stringify(data, null, 2);
+    };
+  </script>
+</body>
+</html> 

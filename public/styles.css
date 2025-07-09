@@ -1,0 +1,248 @@
+body {
+  margin: 0;
+  font-family: 'Roboto', Arial, sans-serif;
+  background: linear-gradient(135deg, #181A20 0%, #23272F 100%);
+  color: #F1F1F1;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  transition: background 0.6s cubic-bezier(0.4,0,0.2,1);
+}
+
+header {
+  background: rgba(35, 39, 47, 0.95);
+  padding: 2.5rem 1rem 1.5rem 1rem;
+  text-align: center;
+  box-shadow: 0 4px 24px #0004;
+  border-bottom: 2px solid #00C6FB33;
+  animation: fadeInDown 1s cubic-bezier(0.4,0,0.2,1);
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2.8rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  background: linear-gradient(90deg, #00C6FB 0%, #005BEA 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+header p {
+  margin: 0.7rem 0 0 0;
+  font-size: 1.3rem;
+  color: #A0A0A0;
+  letter-spacing: 1px;
+  animation: fadeIn 1.5s 0.2s backwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+main {
+  flex: 1;
+  padding: 2.5rem 1rem 1rem 1rem;
+  max-width: 800px;
+  margin: 0 auto;
+  animation: fadeIn 1.2s 0.3s backwards;
+}
+
+.intro ul {
+  list-style: none;
+  padding: 0;
+}
+
+.intro li {
+  background: linear-gradient(90deg, #23272F 60%, #181A20 100%);
+  margin: 0.7rem 0;
+  padding: 1.2rem 1rem;
+  border-radius: 12px;
+  font-size: 1.15rem;
+  box-shadow: 0 2px 8px #0002;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+  animation: fadeInUp 0.8s cubic-bezier(0.4,0,0.2,1);
+}
+
+.intro li:hover {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 6px 24px #00C6FB33;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.api-demo {
+  margin-top: 2.5rem;
+  background: linear-gradient(120deg, #23272F 80%, #005BEA22 100%);
+  padding: 2rem 1.5rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px #0003;
+  animation: fadeInUp 1.2s 0.2s backwards;
+  border: 1.5px solid #00C6FB33;
+}
+
+.api-demo h2 {
+  margin-top: 0;
+  font-size: 1.4rem;
+  letter-spacing: 1px;
+}
+
+button {
+  background: linear-gradient(90deg, #00C6FB 0%, #005BEA 100%);
+  color: #fff;
+  border: none;
+  padding: 0.9rem 2rem;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 1.2rem;
+  box-shadow: 0 2px 8px #005BEA44;
+  transition: background 0.3s, transform 0.2s, box-shadow 0.2s;
+  outline: none;
+  letter-spacing: 1px;
+  animation: fadeIn 1.5s 0.5s backwards;
+}
+
+button:hover {
+  background: linear-gradient(90deg, #005BEA 0%, #00C6FB 100%);
+  transform: scale(1.05);
+  box-shadow: 0 6px 24px #00C6FB55;
+}
+
+pre {
+  background: #181A20;
+  color: #00C6FB;
+  padding: 1.1rem;
+  border-radius: 8px;
+  overflow-x: auto;
+  font-size: 1.05rem;
+  margin-top: 1rem;
+  box-shadow: 0 1px 6px #0002;
+  transition: box-shadow 0.2s;
+}
+
+pre#respuesta-api {
+  color: #F1F1F1;
+  background: #23272F;
+  border-left: 4px solid #00C6FB;
+  min-height: 2.5rem;
+  transition: border-color 0.3s;
+}
+
+pre#respuesta-api:empty {
+  border-left: 4px solid #23272F;
+}
+
+footer {
+  background: rgba(35, 39, 47, 0.98);
+  text-align: center;
+  padding: 1.2rem 1rem;
+  color: #A0A0A0;
+  font-size: 1rem;
+  box-shadow: 0 -2px 12px #0003;
+  border-top: 2px solid #00C6FB33;
+  letter-spacing: 1px;
+  animation: fadeInUp 1.2s 0.5s backwards;
+}
+
+.comenzar-btn {
+  background: linear-gradient(90deg, #ff512f 0%, #dd2476 100%);
+  color: #fff;
+  border: none;
+  padding: 0.9rem 2.2rem;
+  border-radius: 8px;
+  font-size: 1.15rem;
+  font-weight: 700;
+  cursor: pointer;
+  margin: 1.2rem 0.7rem 0.7rem 0;
+  box-shadow: 0 2px 8px #dd247655;
+  transition: background 0.3s, transform 0.2s, box-shadow 0.2s;
+  outline: none;
+  letter-spacing: 1px;
+  display: inline-block;
+  animation: fadeIn 1.5s 0.5s backwards;
+}
+.comenzar-btn:hover {
+  background: linear-gradient(90deg, #dd2476 0%, #ff512f 100%);
+  transform: scale(1.05);
+  box-shadow: 0 6px 24px #ff512f55;
+}
+
+.google-btn {
+  background: #fff;
+  color: #23272F;
+  border: none;
+  padding: 0.8rem 2rem 0.8rem 1.2rem;
+  border-radius: 8px;
+  font-size: 1.08rem;
+  font-weight: 700;
+  cursor: pointer;
+  margin: 1.2rem 0 0.7rem 0;
+  box-shadow: 0 2px 8px #0002;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  transition: box-shadow 0.2s, transform 0.2s;
+  outline: none;
+  animation: fadeIn 1.5s 0.7s backwards;
+}
+.google-btn:hover {
+  box-shadow: 0 6px 24px #00C6FB33;
+  transform: scale(1.04);
+}
+.google-logo {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #fff;
+}
+#user-info {
+  margin-top: 1rem;
+  background: #23272F;
+  color: #00C6FB;
+  padding: 0.7rem 1.2rem;
+  border-radius: 8px;
+  font-size: 1.08rem;
+  box-shadow: 0 2px 8px #00C6FB22;
+  display: inline-block;
+  animation: fadeInDown 1s 0.5s backwards;
+}
+@media (max-width: 600px) {
+  header h1 {
+    font-size: 1.6rem;
+  }
+  main {
+    padding: 1.2rem 0.5rem;
+  }
+  .api-demo {
+    padding: 1.1rem;
+  }
+  .intro li {
+    font-size: 1rem;
+    padding: 0.9rem 0.7rem;
+  }
+  .comenzar-btn, .google-btn {
+    width: 100%;
+    font-size: 1rem;
+    padding: 0.8rem 0;
+    margin: 0.7rem 0 0.7rem 0;
+    justify-content: center;
+  }
+  #user-info {
+    font-size: 1rem;
+    padding: 0.6rem 0.7rem;
+  }
+} 
